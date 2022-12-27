@@ -70,6 +70,7 @@ namespace EmployeeWage
             System.Console.WriteLine("1). Check Employee is Present or Absent");
             System.Console.WriteLine("2). Calculate Daily Employee Wage");
             System.Console.WriteLine("3). Add Part Time Employee & Wage");
+            System.Console.WriteLine("4). Monthly Wages");
             int option = Convert.ToInt32(Console.ReadLine());
 
             switch (option)
@@ -103,7 +104,41 @@ namespace EmployeeWage
                 case 3:
                     PartTime();
                     break;
+                case 4:
+                    MonthlyWages();
+                    break;
             }
+        }
+
+        public void MonthlyWages()
+        {
+            const int FULL_TIME = 1;
+            const int PART_TIME = 2;
+            const int EMP_RATE_PER_HR = 20;
+            const int MAX_WORKING_DAYS = 20;
+            int empHrs = 0, empWage = 0, totalWage = 0, day = 1;
+
+            Random random = new Random();
+
+            for (day = 1; day <= MAX_WORKING_DAYS; day++)
+            {
+                int employeeInput = random.Next(0, 3);
+                switch (employeeInput)
+                {
+                    case FULL_TIME:
+                        empHrs = 8;
+                        break;
+                    case PART_TIME:
+                        empHrs = 4;
+                        break;
+                    default:
+                        empHrs = 0;
+                        break;
+                }
+                empWage = EMP_RATE_PER_HR * empHrs;
+                totalWage += empWage;
+            }
+            Console.WriteLine("Total wage for {0} days:{1}", (day - 1), totalWage);
         }
 
     }
