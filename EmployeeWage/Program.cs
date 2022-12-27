@@ -44,6 +44,26 @@ namespace EmployeeWage
                 return dailyWage;
             }
         }
+
+        public void PartTime()//UC3
+        { 
+            int partTimeWage = 0;
+            int dailyWage = DailyEmpWage();
+
+            if (dailyWage > 0)
+            {
+                partTimeWage = dailyWage / 2;
+                System.Console.WriteLine($"Part time Employee is present and his wage is {partTimeWage}");
+            }
+            else
+            {
+                System.Console.WriteLine(
+                    "Part time Employee is absent and his wage is 0"
+                );
+            }
+
+
+        }
     }
     class Program
     {
@@ -52,17 +72,23 @@ namespace EmployeeWage
             System.Console.WriteLine("Welcome to Employee wage computation program on master branch");
             EmpWage employee = new EmpWage();
 
-            int wage = employee.DailyEmpWage();
+            employee.PartTime();
 
-            if (wage > 0)
-            {
-                System.Console.WriteLine("Employee is present and his daily wage is {0}", wage);
 
-            }
-            else
-            {
-                System.Console.WriteLine("Employee is absent and his daily wage is 0");
-            }
+
+            // int wage = employee.DailyEmpWage();
+
+            // if (wage > 0)
+            // {
+            //     System.Console.WriteLine("Employee is present and his daily wage is {0}", wage);
+
+            // }
+            // else
+            // {
+            //     System.Console.WriteLine("Employee is absent and his daily wage is 0");
+            // }
+
+
         }
     }
 }
