@@ -184,7 +184,7 @@ namespace EmployeeWage
 
             System.Console.WriteLine("");
 
-            employee.switchCase();
+            employee.CalculateWagestillMonth();
 
 
         }
