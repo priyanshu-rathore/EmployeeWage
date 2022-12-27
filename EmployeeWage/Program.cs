@@ -65,7 +65,7 @@ namespace EmployeeWage
 
         }
 
-        public void switchCase()
+        public void switchCase()//UC4
         {
             System.Console.WriteLine("1). Check Employee is Present or Absent");
             System.Console.WriteLine("2). Calculate Daily Employee Wage");
@@ -110,7 +110,7 @@ namespace EmployeeWage
             }
         }
 
-        public void MonthlyWages()
+        public void MonthlyWages()//UC5
         {
             const int FULL_TIME = 1;
             const int PART_TIME = 2;
@@ -139,6 +139,39 @@ namespace EmployeeWage
                 totalWage += empWage;
             }
             Console.WriteLine("Total wage for {0} days:{1}", (day - 1), totalWage);
+        }
+
+        public void CalculateWagestillMonth(){//UC6
+            const int FULL_TIME = 1;
+            const int PART_TIME = 2;
+            const int EMP_RATE_PER_HR = 20;
+            const int MAX_WORKING_DAYS = 20;
+            const int MAX_WORKING_HRS = 80;
+            int empHrs = 0, empWage = 0, totalWage = 0, day = 1, totalHrs = 0;
+
+            Random random = new Random();
+
+            while (day <= MAX_WORKING_DAYS && totalHrs <= MAX_WORKING_HRS)
+            {
+                int employeeInput = random.Next(0, 3);
+                switch (employeeInput)
+                {
+                    case FULL_TIME:
+                        empHrs = 8;
+                        break;
+                    case PART_TIME:
+                        empHrs = 4;
+                        break;
+                    default:
+                        empHrs = 0;
+                        break;
+                }
+                empWage = EMP_RATE_PER_HR * empHrs;
+                totalWage += empWage; 
+                totalHrs += empHrs;
+                day++;
+            }
+            Console.WriteLine("Total wage for {0} days:{1} and Hrs:{2}", (day - 1), totalWage, (totalHrs - empHrs));
         }
 
     }
