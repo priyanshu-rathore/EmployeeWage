@@ -46,7 +46,7 @@ namespace EmployeeWage
         }
 
         public void PartTime()//UC3
-        { 
+        {
             int partTimeWage = 0;
             int dailyWage = DailyEmpWage();
 
@@ -64,6 +64,48 @@ namespace EmployeeWage
 
 
         }
+
+        public void switchCase()
+        {
+            System.Console.WriteLine("1). Check Employee is Present or Absent");
+            System.Console.WriteLine("2). Calculate Daily Employee Wage");
+            System.Console.WriteLine("3). Add Part Time Employee & Wage");
+            int option = Convert.ToInt32(Console.ReadLine());
+
+            switch (option)
+            {
+                case 1:
+                    int attendance = EmpAttendance();
+                    if (attendance == 1)
+                    {
+                        System.Console.WriteLine("Employee is Present");
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("Employee is Absent");
+                    }
+                    break;
+                case 2:
+                    int wage = DailyEmpWage();
+
+                    if (wage > 0)
+                    {
+                        System.Console.WriteLine("Employee is present and his daily wage is {0}", wage);
+
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("Employee is absent and his daily wage is 0");
+                    }
+
+
+                    break;
+                case 3:
+                    PartTime();
+                    break;
+            }
+        }
+
     }
     class Program
     {
@@ -72,21 +114,9 @@ namespace EmployeeWage
             System.Console.WriteLine("Welcome to Employee wage computation program on master branch");
             EmpWage employee = new EmpWage();
 
-            employee.PartTime();
+            System.Console.WriteLine("");
 
-
-
-            // int wage = employee.DailyEmpWage();
-
-            // if (wage > 0)
-            // {
-            //     System.Console.WriteLine("Employee is present and his daily wage is {0}", wage);
-
-            // }
-            // else
-            // {
-            //     System.Console.WriteLine("Employee is absent and his daily wage is 0");
-            // }
+            employee.switchCase();
 
 
         }
